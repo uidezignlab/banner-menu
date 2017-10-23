@@ -1,0 +1,220 @@
+@import "mediaqueries";
+
+/*
+
+NOTE:
+
+I have created the top navigation to be usable in two cases:
+
+    1) outside the banner like illustrated in index.html
+    1) inside the banner like illustrated in index2.html
+
+
+DEAL WITH THE COLORS
+
+ */
+
+
+body {
+  background: white;
+}
+
+body, h1, h2, h3, h4, h5, h6, input[type="text"], input[type="password"], input[type="email"], textarea, select, input[type="button"], input[type="submit"], button, span, i, strong, p, a {
+  font-family: "Raleway","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+  text-transform: none;
+  color: #607d8b; }
+
+.site-nav{
+  min-height: 75px;
+  box-shadow: 0 3px 15px 1px lightgrey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4rem;
+  .logo{
+    a{
+      text-decoration: none;
+      font:{
+        size: 2.5rem;
+        family: Tangerine, sans-serif;
+      }
+    }
+  }
+  .nav-menu{
+    margin: 0;
+    li{
+      list-style: none;
+      display: inline-block;
+      margin-right: 1rem;
+      a{
+        text-decoration: none;
+        transition: color 500ms;
+        &:hover{
+          color: #ff1990;
+        }
+      }
+    }
+  }
+  .menu-toggle{
+    cursor: pointer;
+    display: none;
+    font-size: 2rem;
+    transition: color 500ms;
+    &:hover{
+      color: #ff0166;
+    }
+  }
+  @include mq(920, max){
+    .nav-menu{
+      display: none;
+    }
+    .menu-toggle{
+      display: inline-block;
+    }
+  }
+  @include mq(480, max){
+    padding: 0 2rem;
+  }
+}
+.side-nav{
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 250px;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  z-index: 2000;
+  transition: right 300ms;
+  .side-logo{
+    width: 100%;
+    height: 75px;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    a{
+      text-decoration: none;
+      color: whitesmoke;
+      font:{
+        size: 3.5rem;
+        family: Tangerine, sans-serif;
+      }
+    }
+    .cls-nav{
+      position: absolute;
+      top: 0.7rem;
+      left: 0.7rem;
+      color: whitesmoke;
+      cursor: pointer;
+      transition: all 500ms;
+      &:hover{
+        transform: rotate(360deg);
+        color: #ff1990;
+      }
+    }
+  }
+  .side-menu{
+    margin: 1rem 0 0 0;
+    li{
+      display: block;
+      list-style: none;
+      a{
+        text-decoration: none;
+        display: block;
+        padding: 18px 18px;
+        color: whitesmoke;
+        border-bottom: 1px solid #424242;
+        transition: all 500ms;
+        &:hover{
+          background: black;
+        }
+      }
+    }
+  }
+  &.slide-out{
+    right: 0;
+  }
+}
+
+.banner-one{
+  height: 350px;
+  margin-top: 3px;
+  background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('../img/banner.jpg');
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  h1{
+    font:{
+      size: 2.1rem;
+    }
+  }
+  p{
+    margin: 1rem 0;
+    line-height: 1.3;
+  }
+  .ui-btn{
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.68rem 2.5rem;
+    border-radius: 25px;
+    background: #17a3ff;
+    color: white;
+    font:{
+      weight: bold;
+    }
+  }
+  @include mq(480, max){
+    padding: 5rem 1rem;
+  }
+}
+.banner-two{
+  height: 550px;
+  background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('../img/banner2.jpg');
+  .banner-wrapper{
+    height: calc(100% - 76px);
+    padding: 2rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h1{
+      font:{
+        size: 2.1rem;
+      }
+    }
+    p{
+      margin: 1rem 0;
+      line-height: 1.3;
+    }
+    .ui-btn{
+      text-decoration: none;
+      display: inline-block;
+      padding: 0.68rem 2.5rem;
+      border-radius: 25px;
+      background: #17a3ff;
+      color: white;
+      font:{
+        weight: bold;
+      }
+    }
+    @include mq(480, max){
+      padding: 2rem 1rem;
+    }
+  }
+  .site-nav{
+    box-shadow: none;
+    .logo{
+      a{
+        color: white;
+      }
+    }
+    .nav-menu{
+      li{
+        a{
+          color: white;
+        }
+      }
+    }
+  }
+}
